@@ -6,7 +6,7 @@ const Media = () => {
         getImage();
     }, [])
     const getImage = () => {
-        fetch('https://nsbgram-server.vercel.app/posts', {
+        fetch('https://nsbgram-server.vercel.app/myDescendingPosts', {
             method: 'GET',
 
         })
@@ -17,11 +17,10 @@ const Media = () => {
             })
     }
     return (
-        <div>
+        <div className="bg-yellow-500">
+            <h2 className="text-3xl font-bold font-sans text-center p-6">ALL POSTS.....</h2>
 
-
-
-            <div className="grid grid-cols-3 bg-yellow-500">
+            <div className="grid grid-cols-3  pt-12 gap-2">
 
 
                 {
@@ -33,7 +32,7 @@ const Media = () => {
                                    
 
                                 </div>
-                                <figure className="w-full h-72"> <img width={150} height={150} src={data.image}></img></figure>
+                                <figure className="w-full h-60"> <img width={200} height={200} src={data.image}></img></figure>
 
                                 <div className="card-actions w-full flex justify-center">
                                 <Link to={`/postDetails/${data._id}`}><button className="btn btn-warning btn-lg m-2" >Details</button></Link>

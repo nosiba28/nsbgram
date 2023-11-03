@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import newpost from "../assets/new-post.png"
 
 const Home = () => {
     const [image,setImage] = useState("");
@@ -40,7 +41,7 @@ const Home = () => {
         })
     }
     const getImage =()=>{
-        fetch('https://nsbgram-server.vercel.app/posts', {
+        fetch('https://nsbgram-server.vercel.app/myDescendingPosts', {
             method: 'GET',
            
         })
@@ -51,7 +52,8 @@ const Home = () => {
         })
     }
     return (
-        <div className="bg-yellow-100">
+        <div className="bg-yellow-100 p-6">
+            <div className="flex justify-center m-4"><img className="rounded-xl" src={newpost}></img></div>
             {/* first section */}
             <form onSubmit={handelAddPosts} action="/profile" method="post" encType="multipart/form-data">
                 <div className="space-y-12 ">
@@ -101,8 +103,9 @@ const Home = () => {
                 </div>
 
             </form>
-
-            <div className="grid grid-cols-3 gap-2">
+             
+             <h2 className="text-3xl font-bold font-sans text-center p-6">ALL POPULAR POSTS</h2>
+            <div className="grid grid-cols-3 gap-2 p-3">
                  {
                     allImage?.map(data=>{
                         return(
