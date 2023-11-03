@@ -1,9 +1,21 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const [show, setShow] = useState(false);
+    // const target = useRef(null);
+
+    const handleLogout = () => {
+        logOut()
+            .then()
+            .catch(error => console.log(error))
+    }
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-300">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -16,7 +28,7 @@ const NavBar = () => {
                             <li><a>About</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">nsbApp</a>
+                    <a className="btn btn-ghost normal-case text-3xl font-serif font-bold">nsbGram</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -27,7 +39,15 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className="btn" to="/login">Login</Link>
+                    {user ? <>
+                        <span className="md:flex justify-center items-center">
+                            <div className="tooltip tooltip-open tooltip-left" data-tip={user.displayName}>
+                                <button className="btn"><img src={user?.photoURL} alt="" className="w-11 rounded-full" /></button>
+                            </div>
+
+                            <button className="btn btn-outline btn-warning text-lg mx-4 px-3" onClick={handleLogout}>Logout</button>
+                        </span>
+                    </> : <Link to="/login"><button className="btn btn-outline btn-warning text-lg">Login</button></Link>}
                 </div>
             </div>
         </div>

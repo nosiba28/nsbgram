@@ -1,7 +1,7 @@
 const Message = () => {
     return (
-        <div>
-            <h2>hi msggggggggg</h2>
+        <div className="bg-yellow-100">
+            <h2 className="text-xl p-12">This is todo page.......</h2>
         </div>
     );
 };

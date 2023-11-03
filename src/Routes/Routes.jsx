@@ -8,6 +8,8 @@ import Message from "../pages/Message";
 import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PostDetails from "../pages/PostDetails";
+import PrivateRoute from "./PrivateRoute";
 
  export const router = createBrowserRouter([
     {
@@ -29,6 +31,11 @@ import Register from "../pages/Register";
         {
             path: '/about',
             element: <About></About>
+        },
+        {
+          path: "/postDetails/:id",
+          element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
+          loader: ({params}) => fetch(`https://nsbgram-server.vercel.app/myposts/${params.id}`)
         },
         {
             path:'/login',

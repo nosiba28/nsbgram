@@ -16,5 +16,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react-refresh/only-export-components': 'warn',
+    'react/prop-types': 'off',
+    'no-unused-vars': 0,
+    'react/jsx-no-target-blank':0
+
   },
 }
